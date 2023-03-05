@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Post } from '../../models/post';
+import { DashboardService } from './services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,32 +10,17 @@ import { Post } from '../../models/post';
 })
 export class DashboardComponent implements OnInit {
 
-  posts: Post[] = [];
+  posts$: Subject<Post[]> | undefined;
+
+  constructor(private dashboardService: DashboardService) {}
 
   ngOnInit() {
-    this.getPosts();
+    this.dashboardService.getPosts();
+    this.posts$ = this.dashboardService.posts$;
   }
 
-  private getPosts(): void {
-    fetch("https://graphqlzero.almansi.me/api", {
-      "method": "POST",
-      "headers": { "content-type": "application/json" },
-      "body": JSON.stringify({
-        query: `{
-          posts(options:{
-            paginate: {
-              page:1,
-              limit:10
-            }
-          }) {
-            data {
-              id
-              title
-              body
-            }
-          }
-        }`
-      })
-    }).then(res => res.json()).then((response) => this.posts = response.data.posts.data);
-  }
+  // onCreatePost(): void {
+  //   console.log('onCreatePost');
+  //   this.router.navigateByUrl('create-post');
+  // }
 }

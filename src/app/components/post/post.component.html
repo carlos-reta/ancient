@@ -1,5 +1,9 @@
 <div class="post">
   <p>{{ post.id }}. {{ post.title }}</p>
   <p>{{ post.body }}</p>
-  <app-post-buttons></app-post-buttons>
+
+  <div class="post-buttons">
+    <app-primary-button [text]="'Update'" (click)="onUpdate()"></app-primary-button>
+    <app-delete-button></app-delete-button>
+  </div>
 </div>

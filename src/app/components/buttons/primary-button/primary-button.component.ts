@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-primary-button',
@@ -7,5 +7,4 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class PrimaryButtonComponent {
   @Input() text!: string;
-  @Output() click!: EventEmitter<boolean>;
 }

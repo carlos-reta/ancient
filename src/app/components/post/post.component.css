@@ -4,3 +4,8 @@
   padding: 1rem;
   margin-bottom: 1rem;
 }
+
+.post-buttons {
+  display: flex;
+  gap: 1rem;
+}

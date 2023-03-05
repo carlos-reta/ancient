@@ -1,0 +1,15 @@
+<h1>{{ pageTitle }}</h1>
+
+<form class="form">
+  <div class="form-item">
+    <label for="title">Title: </label>
+    <input id="title" type="text" [formControl]="title">
+  </div>
+
+  <div class="form-item">
+    <label for="body">Body: </label>
+    <input id="body" type="text" [formControl]="body">
+  </div>
+
+  <a routerLink="/dashboard"><app-primary-button [text]="'Create'" (click)="onCreate()"></app-primary-button></a>
+</form>

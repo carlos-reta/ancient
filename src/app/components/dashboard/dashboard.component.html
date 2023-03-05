@@ -1,8 +1,8 @@
 <h1>Create Post</h1>
-<app-primary-button [text]="'Create'"></app-primary-button>
+<a routerLink="/create-post"><app-primary-button [text]="'Create'"></app-primary-button></a>
 
 <h1>Posts List</h1>
 
-<ng-container *ngFor="let post of posts">
+<ng-container *ngFor="let post of posts$ | async">
   <app-post [post]="post"></app-post>
 </ng-container>
