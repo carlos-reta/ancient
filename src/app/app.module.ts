@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ButtonsModule } from './components/buttons/buttons.module';
 import { CreatePostModule } from './components/create-post/create-post.module';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './components/dashboard/component/dashboard.component';
 import { DashboardEffect } from './components/dashboard/effect/dashboard.effect';
 import { dashboardReducer } from './components/dashboard/reducer/dashboard.reducer';
 import { DashboardService } from './components/dashboard/services/dashboard.service';

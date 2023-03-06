@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { CreatePostInput, PostService, UpdatePostInput } from '../../services/post.service';
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
-  styleUrls: ['./create-post.component.css']
+  styleUrls: ['./create-post.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreatePostComponent implements OnInit {
   pageTitle = 'Create New Post';

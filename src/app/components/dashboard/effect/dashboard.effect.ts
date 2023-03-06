@@ -13,13 +13,13 @@ export class DashboardEffect {
     private actions$: Actions<GetPostsAction>,
     private dashboardService: DashboardService) {}
 
-  dashboard$ = createEffect(() => this.actions$
-  .pipe(
-    ofType<GetPostsAction>(DashboardActionTypes.GET_POSTS),
-    switchMap(() => {
-      return this.dashboardService.getPosts();
-    }),
-    switchMap((data) => {
-      return of(new GetPostsSuccessAction(data.data.posts.data));
-    })));
+    dashboard$ = createEffect(() => this.actions$
+      .pipe(
+        ofType<GetPostsAction>(DashboardActionTypes.GET_POSTS),
+        switchMap(() => {
+          return this.dashboardService.getPosts();
+        }),
+        switchMap((data) => {
+          return of(new GetPostsSuccessAction(data.data.posts.data));
+        })));
 }
