@@ -1,7 +1,7 @@
 <h1>{{ pageTitle }}</h1>
 
 <form class="form">
-  <div class="form-item">
+  <div *ngIf="!isUpdateAction" class="form-item">
     <label for="title">Title: </label>
     <input id="title" type="text" [formControl]="title">
   </div>

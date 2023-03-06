@@ -18,6 +18,10 @@ export class PostComponent {
     this.router.navigate(['/update-post', this.post.id]);
   }
 
+  onDelete(): void {
+    this.postService.deletePost(this.post.id || '1');
+  }
+
   private setPostInfo(): void {
     this.postService.post = {};
     this.postService.post.id = this.post.id;

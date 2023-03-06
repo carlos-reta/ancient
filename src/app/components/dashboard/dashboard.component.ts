@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { Post } from '../../models/post';
-import { DashboardService } from './services/dashboard.service';
+import { PostService } from '../../services/post.service';
+import { GetPostsAction } from './action/dashboard.actions';
+import { selectDashboard } from './effect/dashboard.selector';
+
+interface AppState {
+  posts: Post[];
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -10,17 +16,17 @@ import { DashboardService } from './services/dashboard.service';
 })
 export class DashboardComponent implements OnInit {
 
-  posts$: Subject<Post[]> | undefined;
+  posts: Post[] = [];
 
-  constructor(private dashboardService: DashboardService) {}
-
-  ngOnInit() {
-    this.dashboardService.getPosts();
-    this.posts$ = this.dashboardService.posts$;
+  constructor(private store: Store<AppState>, private postService: PostService) {
+    this.store.select(selectDashboard).subscribe((posts) => this.posts = posts);
   }
 
-  // onCreatePost(): void {
-  //   console.log('onCreatePost');
-  //   this.router.navigateByUrl('create-post');
-  // }
+  ngOnInit() {
+    this.store.dispatch(new GetPostsAction());
+  }
+
+  onCreate(): void {
+    this.postService.post = {};
+  }
 }

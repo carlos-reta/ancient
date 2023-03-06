@@ -1,27 +1,8 @@
 # Ancient
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
+En el create, crea el nuevo elemento correctamente con el ID 101, pero no puedo verlo en el listado.
+Ya he visto que no se lanza el valueChanges otra ves, he intentado cargar los datos otra vez y de cache pero no consigo obtener el listado con el nuevo item.
+Podría añadir el nuevo item al listado manualmente, pero entiendo que este no es el objetivo...
+Lo mismo para el delete, elimina el post correctamente, pero no veo el cambio en la lista.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+En el update, en cambio, al producirse, si que se refresca el listado y puedo ver el elemento cambiado.

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Post } from '../../../models/post';
 
 const GET_POSTS = gql`
@@ -8,7 +8,7 @@ const GET_POSTS = gql`
     posts(options:{
       paginate: {
         page:1,
-        limit:10
+        limit:1000
       }
     }) {
       data {
@@ -27,13 +27,11 @@ export class DashboardService {
 
   constructor(private apollo: Apollo) {}
 
-  getPosts(): void {
-    this.apollo
+  getPosts(): Observable<any> {
+    return this.apollo
     .watchQuery<any>({
       query: GET_POSTS,
     })
-    .valueChanges.subscribe(({ data, loading }) => {
-      this.posts$.next(data.posts.data);
-    });
+    .valueChanges;
   }
 }
