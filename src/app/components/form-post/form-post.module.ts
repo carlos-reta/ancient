@@ -4,11 +4,11 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ButtonsModule } from '../buttons/buttons.module';
-import { CreatePostComponent } from './create-post.component';
+import { FormPostComponent } from './form-post.component';
 
 @NgModule({
-  declarations: [CreatePostComponent],
+  declarations: [FormPostComponent],
   imports: [CommonModule, ReactiveFormsModule, ButtonsModule, RouterModule],
-  exports: [CreatePostComponent],
+  exports: [FormPostComponent],
 })
-export class CreatePostModule {}
+export class FormPostModule {}

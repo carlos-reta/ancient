@@ -8,11 +8,11 @@ import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ButtonsModule } from './components/buttons/buttons.module';
-import { CreatePostModule } from './components/create-post/create-post.module';
 import { DashboardComponent } from './components/dashboard/component/dashboard.component';
 import { DashboardEffect } from './components/dashboard/effect/dashboard.effect';
 import { dashboardReducer } from './components/dashboard/reducer/dashboard.reducer';
 import { DashboardService } from './components/dashboard/services/dashboard.service';
+import { FormPostModule } from './components/form-post/form-post.module';
 import { PostComponent } from './components/post/post.component';
 import { GraphQLModule } from './graphql.module';
 import { PostService } from './services/post.service';
@@ -25,7 +25,7 @@ import { PostService } from './services/post.service';
     AppRoutingModule,
     HttpClientModule,
     ButtonsModule,
-    CreatePostModule,
+    FormPostModule,
     EffectsModule.forRoot([DashboardEffect]),
     StoreModule.forRoot({}, {}),
     StoreModule.forFeature('dashboard', dashboardReducer),

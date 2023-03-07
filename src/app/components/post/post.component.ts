@@ -1,7 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
+import { DeletePostAction } from '../dashboard/action/dashboard.actions';
+import { AppState } from '../dashboard/component/dashboard.component';
 
 @Component({
   selector: 'app-post',
@@ -12,7 +15,7 @@ import { PostService } from '../../services/post.service';
 export class PostComponent {
   @Input() post!: Post;
 
-  constructor(private router: Router, private postService: PostService) {}
+  constructor(private store: Store<AppState>, private router: Router, private postService: PostService) {}
 
   onUpdate(): void {
     this.setPostInfo();
@@ -20,7 +23,7 @@ export class PostComponent {
   }
 
   onDelete(): void {
-    this.postService.deletePost(this.post.id || '1');
+    this.store.dispatch(new DeletePostAction(this.post.id || '1'));
   }
 
   private setPostInfo(): void {

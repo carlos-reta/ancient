@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreatePostComponent } from './components/create-post/create-post.component';
 import { DashboardComponent } from './components/dashboard/component/dashboard.component';
+import { FormPostComponent } from './components/form-post/form-post.component';
 
 const routes: Routes = [
   {
@@ -15,11 +15,11 @@ const routes: Routes = [
   },
   {
     path: 'create-post',
-    component: CreatePostComponent
+    component: FormPostComponent
   },
   {
     path: 'update-post/:id',
-    component: CreatePostComponent
+    component: FormPostComponent
   },
   {
     path: '**',

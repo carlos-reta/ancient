@@ -1,20 +1,23 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { CreatePostInput, PostService, UpdatePostInput } from '../../services/post.service';
+import { AddPostAction } from '../dashboard/action/dashboard.actions';
+import { AppState } from '../dashboard/component/dashboard.component';
 
 @Component({
-  selector: 'app-create-post',
-  templateUrl: './create-post.component.html',
-  styleUrls: ['./create-post.component.css'],
+  selector: 'app-form-post',
+  templateUrl: './form-post.component.html',
+  styleUrls: ['./form-post.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CreatePostComponent implements OnInit {
+export class FormPostComponent implements OnInit {
   pageTitle = 'Create New Post';
   title = new FormControl('');
   body = new FormControl('');
   isUpdateAction = false;
 
-  constructor(private postService: PostService) {}
+  constructor(private store: Store<AppState>, private postService: PostService) {}
 
   ngOnInit(): void {
     this.checkIfUpdating();
@@ -26,7 +29,7 @@ export class CreatePostComponent implements OnInit {
       this.postService.updatePost(this.postService.post.id, input);
     } else {
       const input: CreatePostInput = { title: this.title.value || 'defaultTitle', body: this.body.value || 'defaultBody'};
-      this.postService.createPost(input);
+      this.store.dispatch(new AddPostAction(input));
     }
   }
 

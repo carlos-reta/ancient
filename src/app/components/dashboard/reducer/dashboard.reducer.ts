@@ -6,9 +6,9 @@ export const DEFAULT_GET_POSTS: Post[] = [];
 export function dashboardReducer(state = DEFAULT_GET_POSTS, action: DashboardActions) {
 
   switch (action.type) {
-    case DashboardActionTypes.ADD_POST:
+    case DashboardActionTypes.ADD_POST_SUCCESS:
       return addPost(state, action.payload);
-    case DashboardActionTypes.DELETE_POST:
+    case DashboardActionTypes.DELETE_POST_SUCCESS:
       return deletePost(state, action.payload);
     case DashboardActionTypes.GET_POSTS_SUCCESS:
       return getPosts(state, action.payload);

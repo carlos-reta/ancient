@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Apollo, gql } from 'apollo-angular';
-import { AddPostAction, DeletePostAction } from '../components/dashboard/action/dashboard.actions';
-import { AppState } from '../components/dashboard/component/dashboard.component';
+import { Observable } from 'rxjs';
 import { Post } from '../models/post';
 
 export interface CreatePostInput {
@@ -51,17 +49,16 @@ export class PostService {
 
   post!: Post;
 
-  constructor(private apollo: Apollo, private store: Store<AppState>) {}
+  constructor(private apollo: Apollo) {}
 
-  createPost(input: CreatePostInput): void {
-    this.apollo
+  createPost(input: CreatePostInput): Observable<any> {
+    return this.apollo
       .mutate({
         mutation: CREATE_POST,
         variables: {
           input: input
         },
-      })
-      .subscribe((data: any) => this.store.dispatch(new AddPostAction(data.data.createPost)));
+      });
   }
 
   updatePost(id: string, input: UpdatePostInput): void {
@@ -76,14 +73,13 @@ export class PostService {
       .subscribe();
   }
 
-  deletePost(id: string): void {
-    this.apollo
+  deletePost(id: string): Observable<any> {
+    return this.apollo
       .mutate({
         mutation: DELETE_POST,
         variables: {
           id: id
         },
-      })
-      .subscribe(() => this.store.dispatch(new DeletePostAction(id)));
+      });
   }
 }
